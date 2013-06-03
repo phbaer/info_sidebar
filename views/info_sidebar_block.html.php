@@ -1,4 +1,4 @@
-<? if (module::get_var("exif_sidebar", "hide_link")  == true) { ?>
+<? if (module::get_var("info_sidebar", "hide_link")  == true) { ?>
   <style type="text/css">
 	#g-exif-data-link { display: none; }
   </style>

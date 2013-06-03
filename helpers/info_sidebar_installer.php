@@ -17,24 +17,24 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street - Fifth Floor, Boston, MA  02110-1301, USA.
  */
-class exif_sidebar_installer {
+class info_sidebar_installer {
 
   static function install() {
     // Set the module's version number.
-    module::set_version("exif_sidebar", 1);
+    module::set_version("info_sidebar", 1);
   }
 
   static function can_activate() {
     $messages = array();
     if (!module::is_active("exif")) {
-      $messages["warn"][] = t("The EXIF_GPS module requires the EXIF module.");
+      $messages["warn"][] = t("The info sidebar module requires the EXIF module.");
     }
     return $messages;
   }
   static function deactivate() {
-    site_status::clear("exif_sidebar_needs_exif");
+    site_status::clear("info_sidebar_needs_exif");
   }
   static function uninstall() {
-    module::delete("exif_sidebar");
+    module::delete("info_sidebar");
   }
 }

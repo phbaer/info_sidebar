@@ -17,9 +17,9 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street - Fifth Floor, Boston, MA  02110-1301, USA.
  */
-class exif_sidebar_block_Core {
+class info_sidebar_block_Core {
   static function get_site_list() {
-    return array("exif_side" => t("EXIF sidebar data"));
+    return array("info_side" => t("Info sidebar data"));
   }
 
   static function get($block_id, $theme) {
@@ -27,20 +27,20 @@ class exif_sidebar_block_Core {
     if ($item && $item->is_photo()) {
       $record = db::build()
         ->select("key_count")
-        ->from("exif_records")
+        ->from("info_records")
         ->where("item_id", "=", $item->id)
         ->execute()
         ->current();
       if ($record && $record->key_count) {
       $block = new Block();
       switch ($block_id) {
-      case "exif_side":
-        $block->css_id = "g-exif-sidebar";
+      case "info_side":
+        $block->css_id = "g-info-sidebar";
         $block->title = t("EXIF data");
-        $block->content = new View("exif_sidebar_block.html");
+        $block->content = new View("info_sidebar_block.html");
         $block->content->details = exif::get($item);
-				$block->content->show_values = module::get_var("exif_sidebar", "show_values");
-				$block->content->hide_values = module::get_var("exif_sidebar", "hide_values");
+				$block->content->show_values = module::get_var("info_sidebar", "show_values");
+				$block->content->hide_values = module::get_var("info_sidebar", "hide_values");
         $block->content->tags = tag::item_tags($item);
       break;
       }

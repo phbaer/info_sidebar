@@ -17,17 +17,17 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street - Fifth Floor, Boston, MA  02110-1301, USA.
  */
-class exif_sidebar_event_Core {
+class info_sidebar_event_Core {
   static function admin_menu($menu, $theme) {
     $menu->get("settings_menu")
       ->append(Menu::factory("link")
-               ->id("exif_sidebar")
-               ->label(t("EXIF Sidebar"))
-               ->url(url::site("admin/exif_sidebar")));
+               ->id("info_sidebar")
+               ->label(t("Info Sidebar"))
+               ->url(url::site("admin/info_sidebar")));
   }
   static function pre_deactivate($data) {
     if ($data->module == "exif") {
-      $data->messages["warn"][] = t("The EXIF sidebar module requires the EXIF module.");
+      $data->messages["warn"][] = t("The info sidebar module requires the EXIF module.");
     }
   }
 
@@ -36,12 +36,12 @@ class exif_sidebar_event_Core {
     //   tell the user to install it if it isn't.
     if (!module::is_active("exif") || in_array("exif", $changes->deactivate)) {
       site_status::warning(
-        t("The EXIF sidebar module requires the EXIF module.  " .
+        t("The info sidebar module requires the EXIF module.  " .
           "<a href=\"%url\">Activate the EXIF module now</a>",
           array("url" => url::site("admin/modules"))),
-        "exif_sidebar_needs_exif");
+        "info_sidebar_needs_exif");
     } else {
-      site_status::clear("exif_sidebar_needs_exif");
+      site_status::clear("info_sidebar_needs_exif");
     }
   }
 }

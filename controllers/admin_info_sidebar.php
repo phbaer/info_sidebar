@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street - Fifth Floor, Boston, MA  02110-1301, USA.
  */
-class Admin_exif_sidebar_Controller extends Admin_Controller {
+class Admin_info_sidebar_Controller extends Admin_Controller {
   public function index() {
     print $this->_get_view();
   }
@@ -28,13 +28,13 @@ class Admin_exif_sidebar_Controller extends Admin_Controller {
     $form = $this->_get_form();
     if ($form->validate()) {
 	  module::set_var (
-	    "exif_sidebar", "hide_link", $form->exif_sidebar->exif_sidebar_hide_link->value);
+	    "info_sidebar", "hide_link", $form->info_sidebar->info_sidebar_hide_link->value);
 	  module::set_var (
-	    "exif_sidebar", "show_values", $form->exif_sidebar->exif_sidebar_show_values->value);
+	    "info_sidebar", "show_values", $form->info_sidebar->info_sidebar_show_values->value);
 	  module::set_var (
-	    "exif_sidebar", "hide_values", $form->exif_sidebar->exif_sidebar_hide_values->value);
+	    "info_sidebar", "hide_values", $form->info_sidebar->info_sidebar_hide_values->value);
       message::success(t("Your settings have been saved."));
-      url::redirect("admin/exif_sidebar");
+      url::redirect("admin/info_sidebar");
     }
 
     print $this->_get_view($form);
@@ -42,20 +42,20 @@ class Admin_exif_sidebar_Controller extends Admin_Controller {
 
   private function _get_view($form=null) {
     $v = new Admin_View("admin.html");
-    $v->content = new View("admin_exif_sidebar.html");
+    $v->content = new View("admin_info_sidebar.html");
     $v->content->form = empty($form) ? $this->_get_form() : $form;
     return $v;
   }
 
   private function _get_form() {
-    $form = new Forge("admin/exif_sidebar/handler", "EXIF sidebar administration.", "post", array("id" => "g-admin-form"));
-    $group = $form->group("exif_sidebar")->label(t("Sidebar options"));
-    $group->checkbox("exif_sidebar_hide_link")->label(t("Hide EXIF dialog link"))
-    	->checked(module::get_var("exif_sidebar", "hide_link", false) == 1);
-	$group->input("exif_sidebar_show_values")->label(t('Comma separated list of eliments to show (overrides hide option).'))
-		->value(module::get_var("exif_sidebar", "show_values"));
-	$group->input("exif_sidebar_hide_values")->label(t('Comma separated list of eliments <strong>not</strong> to show.'))
-		->value(module::get_var("exif_sidebar", "hide_values"));
+    $form = new Forge("admin/info_sidebar/handler", "Info sidebar administration.", "post", array("id" => "g-admin-form"));
+    $group = $form->group("info_sidebar")->label(t("Sidebar options"));
+    $group->checkbox("info_sidebar_hide_link")->label(t("Hide info sidebar dialog link"))
+    	->checked(module::get_var("info_sidebar", "hide_link", false) == 1);
+	$group->input("info_sidebar_show_values")->label(t('Comma separated list of eliments to show (overrides hide option).'))
+		->value(module::get_var("info_sidebar", "show_values"));
+	$group->input("info_sidebar_hide_values")->label(t('Comma separated list of eliments <strong>not</strong> to show.'))
+		->value(module::get_var("info_sidebar", "hide_values"));
     $group->submit("submit")->value(t("Save"));
 
     return $form;
