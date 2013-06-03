@@ -1,0 +1,7 @@
+name = "Image information sidebar block"
+description = "Show some exif data and the image's tags in the sidebar. This is based on exif_sidebar by Floridave: http://codex.gallery2.org/Gallery3:Modules:exif_sidebar"
+version = 1
+author_name = "phbaer"
+author_url = "https://photos.phbaer.net/"
+info_url = "http://codex.gallery2.org/Gallery3:Modules:exif_sidebar"
+discuss_url = "n/a"
