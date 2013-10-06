@@ -3,7 +3,7 @@
 	#g-exif-data-link { display: none; }
   </style>
 <? } ?>
-<div id="g-exif-tags">
+<div id="g-info-tags">
   <ul id="g-tags">
 	<? foreach ($tags as $tag): ?>
     <li class="g-tag"><a href="<?= $tag->url() ?>"><?= html::clean($tag->name) ?></a></li>
@@ -47,6 +47,5 @@
 	}  // close the for each.
 ?>
     <li><span class="g-exif-caption">Size</span><span class="g-exif-value"><?= $theme->item->width ?>x<?= $theme->item->height ?> px</span></li>
-  </tbody>
-</table>
+ </ul>
 </div>
