@@ -1,6 +1,6 @@
-<? if (module::get_var("exif_sidebar", "hide_link") == true) { ?>
+<? if (module::get_var("info_sidebar", "hide_link") == true) { ?>
   <style type="text/css">
-	#g-exif-data-link { display: none; }
+	#g-info-data-link { display: none; }
   </style>
 <? } ?>
 <div id="g-info-tags">
@@ -10,7 +10,7 @@
 	<? endforeach; ?>
 	</ul>
 </div>
-<div id="g-exif-data-table">
+<div id="g-info-data-table">
   <ul class="g-metadata">
 <?
 	foreach ($details as $element) {
@@ -41,11 +41,11 @@
 				break;
 			}
 ?>
-    <li><span class="g-exif-caption"><?= $caption; ?></span><span class="g-exif-value"><?= $value; ?></span></li>
+    <li><span class="g-info-caption"><?= $caption; ?></span><span class="g-info-value"><?= $value; ?></span></li>
 <?
 		} // close the if we should show the row.
 	}  // close the for each.
 ?>
-    <li><span class="g-exif-caption">Size</span><span class="g-exif-value"><?= $theme->item->width ?>x<?= $theme->item->height ?> px</span></li>
+    <li><span class="g-info-caption">Size</span><span class="g-info-value"><?= $theme->item->width ?>x<?= $theme->item->height ?> px</span></li>
  </ul>
 </div>
