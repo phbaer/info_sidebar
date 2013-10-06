@@ -1,6 +1,6 @@
 <? if (module::get_var("info_sidebar", "hide_link") == true) { ?>
   <style type="text/css">
-	#g-info-data-link { display: none; }
+	#g-exif-data-link { display: none; }
   </style>
 <? } ?>
 <div id="g-info-tags">
