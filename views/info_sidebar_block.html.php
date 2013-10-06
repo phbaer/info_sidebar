@@ -1,4 +1,4 @@
-<? if (module::get_var("exif_sidebar", "hide_link")  == true) { ?>
+<? if (module::get_var("exif_sidebar", "hide_link") == true) { ?>
   <style type="text/css">
 	#g-exif-data-link { display: none; }
   </style>
@@ -15,8 +15,8 @@
 <?
 	foreach ($details as $element) {
 		// only show the items that are not on the list from the admin settings.
-		$caption = (string)$element["caption"];
-		$class = '';
+		$caption = (string)$element['caption'];
+		$value = (string)$element['value'];
 		$show = (strlen($show_values) > 0
 			? (strpos($show_values, $caption) !== false)
 			: (strpos($hide_values, $caption) === false));
@@ -24,24 +24,24 @@
 			switch (strtolower($caption))
 			{
 			case "camera model":
-				$element["caption"] = 'Camera';
+				$caption = 'Camera';
 				break;
 
 			case "exposure time":
-				$element["caption"] = "Exposure";
+				$caption = 'Exposure';
 				break;
 
 			case "focal length":
-				$element["caption"] = "Focus";
+				$caption = 'Focus';
 				break;
 
 			case "date/time":
 				$date = new DateTime($element["value"]);
-				$element["value"] = $date->format("Y-M-d, H:i");
+				$value = $date->format("Y-M-d, H:i");
 				break;
 			}
 ?>
-    <li><span class="g-exif-caption<?= $class ?>"><?= $element["caption"]; ?></span><span class="g-exif-value"><?= $element["value"]; ?></span></li>
+    <li><span class="g-exif-caption"><?= $caption; ?></span><span class="g-exif-value"><?= $value; ?></span></li>
 <?
 		} // close the if we should show the row.
 	}  // close the for each.
